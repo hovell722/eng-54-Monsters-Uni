@@ -20,6 +20,9 @@ from workshop_class import *
 # #     print(student.f_name, student.l_name)
 #
 
+
+
+
 list_students_created = []
 student_id = 0
 start = ' '
@@ -62,11 +65,17 @@ while start != 'exit':
         break
     for peeps in list_teachers_created:
         print(peeps.f_name, peeps.l_name, peeps.staff_id)
-    chosen_staff_id = int(input("Enter teacher ID to teach subject: "))
-    teachers_full = (list_teachers_created[chosen_staff_id - 1].f_name + ' ' + list_teachers_created[chosen_staff_id - 1].l_name)
-    workshop = Workshop(subject, teachers_full)
-    list_workshops_created.append(workshop)
-    print(f"Workshop subject: {subject} - Teacher: {teachers_full}")
+    chosen_staff_id = input("Enter teacher ID to teach subject: ")
+    if chosen_staff_id == 'exit':
+        break
+    elif chosen_staff_id.isdigit():
+        int_staff_chosen = int(chosen_staff_id)
+        teachers_full = (list_teachers_created[int_staff_chosen - 1].f_name + ' ' + list_teachers_created[int_staff_chosen - 1].l_name)
+        workshop = Workshop(subject, teachers_full)
+        list_workshops_created.append(workshop)
+        print(f"Workshop subject: {subject} - Teacher: {teachers_full}")
+    else:
+        print("Not a valid ID. Please try again.")
 
 for work in list_workshops_created:
     print(work.subject, work.teacher)
@@ -79,13 +88,16 @@ while start != 'exit':
     chosen_student_id = input("Enter student ID to add skills to: ")
     if chosen_student_id == 'exit':
         break
-    int_chosen_id = int(chosen_student_id)
-    chosen_student = list_students_created[int_chosen_id - 1]
-    add_skill = input("Add an appropriate skill: ")
-    if add_skill == 'exit':
-        break
-    chosen_student.skills.append(add_skill)
-    print(chosen_student.skills)
+    elif chosen_student_id.isdigit():
+        int_chosen_id = int(chosen_student_id)
+        chosen_student = list_students_created[int_chosen_id - 1]
+        add_skill = input("Add an appropriate skill: ")
+        if add_skill == 'exit':
+            break
+        chosen_student.skills.append(add_skill)
+        print(chosen_student.skills)
+    else:
+        print("Not a valid ID. Please try again.")
 
 for red in list_students_created:
     print(red.skills)
