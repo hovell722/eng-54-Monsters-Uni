@@ -26,6 +26,7 @@ from workshop_class import *
 list_students_created = []
 student_id = 0
 start = ' '
+
 while start != 'exit':
     print("New student details.")
     f_name_student = input('Enter first name: ')
@@ -89,11 +90,12 @@ while start != 'exit':
     if chosen_student_id == 'exit':
         break
     elif chosen_student_id.isdigit():
-        int_chosen_id = int(chosen_student_id)
-        chosen_student = list_students_created[int_chosen_id - 1]
+        int_student_chosen = int(chosen_student_id)
+        chosen_student = list_students_created[int_student_chosen - 1]
         add_skill = input("Add an appropriate skill: ")
         if add_skill == 'exit':
             break
+
         chosen_student.skills.append(add_skill)
         print(chosen_student.skills)
     else:

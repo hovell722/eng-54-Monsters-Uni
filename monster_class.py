@@ -7,5 +7,15 @@ class Monster():
         self.skills = []
 
 
+#Todo
+# encapsulate characteristics
+# getters and setters
+# do the add_skills method
+
+
+
+    # def add_skill_to_skills(self, skill):
+    #     self.skills.append(skill)
+
 
 
