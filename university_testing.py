@@ -76,15 +76,19 @@ while start != 'exit':
     print("New skills for students.")
     for pleeps in list_students_created:
         print(pleeps.f_name, pleeps.l_name, pleeps.student_id)
-    chosen_student_id = int(input("Enter student ID to add skills to: "))
+    chosen_student_id = input("Enter student ID to add skills to: ")
     if chosen_student_id == 'exit':
         break
-    chosen_student = list_students_created[chosen_student_id - 1]
+    int_chosen_id = int(chosen_student_id)
+    chosen_student = list_students_created[int_chosen_id - 1]
     add_skill = input("Add an appropriate skill: ")
     if add_skill == 'exit':
         break
     chosen_student.skills.append(add_skill)
     print(chosen_student.skills)
+
+for red in list_students_created:
+    print(red.skills)
 
 
 
