@@ -71,6 +71,22 @@ while start != 'exit':
 for work in list_workshops_created:
     print(work.subject, work.teacher)
 
+start = ' '
+while start != 'exit':
+    print("New skills for students.")
+    for pleeps in list_students_created:
+        print(pleeps.f_name, pleeps.l_name, pleeps.student_id)
+    chosen_student_id = int(input("Enter student ID to add skills to: "))
+    if chosen_student_id == 'exit':
+        break
+    chosen_student = list_students_created[chosen_student_id - 1]
+    add_skill = input("Add an appropriate skill: ")
+    if add_skill == 'exit':
+        break
+    chosen_student.skills.append(add_skill)
+    print(chosen_student.skills)
+
+
 
 
 
